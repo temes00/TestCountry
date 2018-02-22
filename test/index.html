@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+	<script src="run.js"></script>
+	<title>Country search</title>
+</head>
+<body ng-app="Country" ng-controller="CountrySearch" style="background-color: #dcdcdc">
+	<div class=SF class="col-md-7">
+		<h1 style="float: center">Поиск</h1>
+		<input type="search" name="q" ng-model="search" ng-model-options="{ debounce: 800 }" placeholder="{{linePlace}}">
+		<input type="submit" name="button1" value="OK!" class="button1" ng-click="touch()">
+		<a href="" ng-click="showInfo = !showInfo">Show more</a>
+	</div>
+	<div class=MF class="col-md-3" style="float: right;">
+		<h1 style="float: center">Мои любимые</h1>
+		<ul>
+			<li>1</li>
+			
+		</ul>
+	</div>
+	<!-- <div class=MC class="col-md-7">	
+	</div> -->
+	<div class=CI ng-show = "showInfo" class="col-md-7">
+		<h1 style="float: center">Информация</h1>
+		<p>Название: {{relateds[0].name}}</p>
+		<input type="submit" name="favorite" value="Add to Favorites">
+		<p>Столица: {{relateds[0].capital}}</p>
+		<p>Оригинальное имя: {{relateds[0].nativeName}}</p>
+		<p>Численность: {{relateds[0].population}}</p>
+		<p>Регион: {{relateds[0].region}}</p>
+		
+		<p>Языки:</p>
+		<ul>
+			<li ng-repeat = "lang in relateds[0].languages">{{lang.name}}</li>
+		</ul>
+		<p>Страны соседи: </p>
+		<ul>
+			<li ng-repeat = "bord in relateds[0].borders">{{bord}}</li>
+		</ul>
+		<p>Флаг: <img width="500px" height="300px" src="{{relateds[0].flag}}"></p>
+	</div>
+	<div class=SR  class="col-md-7">
+		<h1 style="float: center">Список стран</h1>
+		<ul>
+			<li ng-repeat = "related in relateds">
+				<h4>{{related.name}}</h4>
+				<button ng-click="showInfo = !showInfo">Show more</button>
+				
+							
+			</li>
+		</ul>
+		<h4>{{clickElements.name}}</h4>
+
+	</div>
+	
+
+
+
+
+</body>
+</html>
